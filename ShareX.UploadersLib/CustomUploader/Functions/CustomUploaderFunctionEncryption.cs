@@ -25,17 +25,15 @@
 
 namespace ShareX.UploadersLib
 {
-    public class CustomUploaderInput
+    internal class CustomUploaderFunctionEncryption : CustomUploaderFunction
     {
-        public string FileName { get; set; }
-        public string Input { get; set; }
-        public string EncryptionKey { get; set; }
+        public override string Name { get; } = "encryptionkey";
 
-        public CustomUploaderInput(string fileName, string input, string encryptionKey = "")
+        public override int MinParameterCount { get; } = 0;
+
+        public override string Call(ShareXCustomUploaderSyntaxParser parser, string[] parameters)
         {
-            FileName = fileName;
-            Input = input;
-            EncryptionKey = encryptionKey;
+            return parser.EncryptionKey;
         }
     }
 }

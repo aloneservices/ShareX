@@ -109,6 +109,7 @@
             this.ttHelpTip = new System.Windows.Forms.ToolTip(this.components);
             this.lblUploaders = new System.Windows.Forms.Label();
             this.pMain = new System.Windows.Forms.Panel();
+            this.e2eeCheckbox = new System.Windows.Forms.CheckBox();
             this.btnTestURLSyntax = new System.Windows.Forms.Button();
             this.cmsHelp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHeaders)).BeginInit();
@@ -174,11 +175,7 @@
             // 
             // cmsHelp
             // 
-            this.cmsHelp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiCustomUploaderGuide,
-            this.tsmiClearUploaders,
-            this.tsmiExportAll,
-            this.tsmiUpdateFolder});
+            this.cmsHelp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.tsmiCustomUploaderGuide, this.tsmiClearUploaders, this.tsmiExportAll, this.tsmiUpdateFolder });
             this.cmsHelp.Name = "cmsCustomUploaderHelp";
             this.cmsHelp.ShowImageMargin = false;
             resources.ApplyResources(this.cmsHelp, "cmsHelp");
@@ -305,9 +302,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvHeaders.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvHeaders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHeaders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cHeadersName,
-            this.cHeadersValue});
+            this.dgvHeaders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.cHeadersName, this.cHeadersValue });
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -354,9 +349,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvParameters.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvParameters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvParameters.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cParametersName,
-            this.cParametersValue});
+            this.dgvParameters.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.cParametersName, this.cParametersValue });
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -469,9 +462,7 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvArguments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvArguments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArguments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cArgumentsName,
-            this.cArgumentsValue});
+            this.dgvArguments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.cArgumentsName, this.cArgumentsValue });
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -702,6 +693,7 @@
             // 
             // pMain
             // 
+            this.pMain.Controls.Add(this.e2eeCheckbox);
             this.pMain.Controls.Add(this.btnTestURLSyntax);
             this.pMain.Controls.Add(this.pResultErrorMessage);
             this.pMain.Controls.Add(this.dgvHeaders);
@@ -729,6 +721,13 @@
             this.pMain.Controls.Add(this.pBodyData);
             resources.ApplyResources(this.pMain, "pMain");
             this.pMain.Name = "pMain";
+            // 
+            // e2eeCheckbox
+            // 
+            resources.ApplyResources(this.e2eeCheckbox, "e2eeCheckbox");
+            this.e2eeCheckbox.Name = "e2eeCheckbox";
+            this.e2eeCheckbox.UseVisualStyleBackColor = true;
+            this.e2eeCheckbox.CheckedChanged += new System.EventHandler(this.e2eeCheckbox_CheckedChanged);
             // 
             // btnTestURLSyntax
             // 
@@ -788,8 +787,11 @@
             this.pMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
+        private System.Windows.Forms.CheckBox e2eeCheckbox;
+
+        private System.Windows.Forms.CheckBox checkBox1;
 
         #endregion
 

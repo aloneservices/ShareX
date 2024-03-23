@@ -83,7 +83,8 @@ namespace ShareX.UploadersLib
                 new CodeMenuItem("{select:input1|input2}", "Lets user to select one input from list"),
                 new CodeMenuItem("{inputbox:title|default_value}", "Lets user to input text"),
                 new CodeMenuItem("{outputbox:title|text}", "Lets user to output text"),
-                new CodeMenuItem("{base64:input}", "Base64 encode input")
+                new CodeMenuItem("{base64:input}", "Base64 encode input"),
+                new CodeMenuItem("{encryptionkey}", "Encryption key")
             };
 
             new CodeMenu(rtbResultURL, outputCodeMenuItems);
@@ -167,6 +168,8 @@ namespace ShareX.UploadersLib
             cbRequestMethod.SelectedIndex = (int)uploader.RequestMethod;
             rtbRequestURL.Text = uploader.RequestURL ?? "";
             CustomUploaderSyntaxHighlight(rtbRequestURL);
+
+            e2eeCheckbox.Checked = uploader.Encrypt;
 
             dgvParameters.Rows.Clear();
             if (uploader.Parameters != null)
@@ -1116,6 +1119,12 @@ namespace ShareX.UploadersLib
         private async void btnCustomUploaderURLSharingServiceTest_Click(object sender, EventArgs e)
         {
             await TestCustomUploader(CustomUploaderDestinationType.URLSharingService, Config.CustomURLSharingServiceSelected);
+        }
+
+        private void e2eeCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            CustomUploaderItem uploader = CustomUploaderGetSelected();
+            if (uploader != null) uploader.Encrypt = e2eeCheckbox.Checked;
         }
 
         #endregion Form events

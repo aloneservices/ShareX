@@ -28,6 +28,7 @@ using ShareX.UploadersLib.Properties;
 using System;
 using System.Drawing;
 using System.IO;
+using ShareX.UploadersLib.Encryption;
 
 namespace ShareX.UploadersLib.FileUploaders
 {
@@ -75,29 +76,40 @@ namespace ShareX.UploadersLib.FileUploaders
             uploader = customUploaderItem;
         }
 
-        public override UploadResult Upload(Stream stream, string fileName)
+        public override UploadResult Upload(Stream origStream, string fileName)
         {
-            UploadResult result = new UploadResult();
-            CustomUploaderInput input = new CustomUploaderInput(fileName, "");
-
-            if (uploader.Body == CustomUploaderBody.MultipartFormData)
+            var processedStream = origStream;
+            var encryptedResult = new AesEncryptedResult();
+            if (uploader.Encrypt)
             {
-                result = SendRequestFile(uploader.GetRequestURL(input), stream, fileName, uploader.GetFileFormName(), uploader.GetArguments(input),
-                    uploader.GetHeaders(input), null, uploader.RequestMethod);
-            }
-            else if (uploader.Body == CustomUploaderBody.Binary)
-            {
-                result.Response = SendRequest(uploader.RequestMethod, uploader.GetRequestURL(input), stream, MimeTypes.GetMimeTypeFromFileName(fileName), null,
-                    uploader.GetHeaders(input));
-            }
-            else
-            {
-                throw new Exception("Unsupported request format: " + uploader.Body);
+                encryptedResult = AesEncrypter.Encrypt(origStream);
+                processedStream = encryptedResult.Stream;
             }
 
-            uploader.TryParseResponse(result, LastResponseInfo, Errors, input);
+            using (var stream = processedStream)
+            {
+                UploadResult result = new UploadResult();
+                CustomUploaderInput input = new CustomUploaderInput(fileName, "", encryptedResult.NonceAndKeyHex);
 
-            return result;
+                if (uploader.Body == CustomUploaderBody.MultipartFormData)
+                {
+                    result = SendRequestFile(uploader.GetRequestURL(input), stream, fileName, uploader.GetFileFormName(), uploader.GetArguments(input),
+                        uploader.GetHeaders(input), null, uploader.RequestMethod);
+                }
+                else if (uploader.Body == CustomUploaderBody.Binary)
+                {
+                    result.Response = SendRequest(uploader.RequestMethod, uploader.GetRequestURL(input), stream, MimeTypes.GetMimeTypeFromFileName(fileName), null,
+                        uploader.GetHeaders(input));
+                }
+                else
+                {
+                    throw new Exception("Unsupported request format: " + uploader.Body);
+                }
+
+                uploader.TryParseResponse(result, LastResponseInfo, Errors, input);
+
+                return result;
+            }
         }
     }
 }

@@ -43,6 +43,9 @@ namespace ShareX.UploadersLib
         [DefaultValue("")]
         public string Name { get; set; }
 
+        [DefaultValue("")]
+        public bool Encrypt { get; set; }
+
         public bool ShouldSerializeName() => !string.IsNullOrEmpty(Name) && Name != URLHelpers.GetHostName(RequestURL);
 
         [DefaultValue(CustomUploaderDestinationType.None)]
@@ -285,7 +288,8 @@ namespace ShareX.UploadersLib
                 {
                     FileName = input.FileName,
                     ResponseInfo = responseInfo,
-                    URLEncode = true
+                    URLEncode = true,
+                    EncryptionKey = input.EncryptionKey
                 };
 
                 if (responseInfo.IsSuccess)

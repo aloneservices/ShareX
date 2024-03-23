@@ -74,7 +74,8 @@ namespace ShareX.UploadersLib
                 new CodeMenuItem("{random:input1|input2}", "Random selection from list"),
                 new CodeMenuItem("{select:input1|input2}", "Lets user to select one input from list"),
                 new CodeMenuItem("{prompt:title|default_value}", "Lets user to input text"),
-                new CodeMenuItem("{base64:input}", "Base64 encode input")
+                new CodeMenuItem("{base64:input}", "Base64 encode input"),
+                new CodeMenuItem("{encryptionkey}", "Encryption key")
             };
 
             new CodeMenu(rtbURLSyntax, outputCodeMenuItems)
