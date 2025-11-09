@@ -806,7 +806,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="pRequestURL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>524, 20</value>
+    <value>440, 20</value>
   </data>
   <data name="pRequestURL.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1767,6 +1767,33 @@
   </data>
   <data name="&gt;&gt;lblUploaders.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="chunkingCheckbox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chunkingCheckbox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>534, 62</value>
+  </data>
+  <data name="chunkingCheckbox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 24</value>
+  </data>
+  <data name="chunkingCheckbox.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="chunkingCheckbox.Text" xml:space="preserve">
+    <value>Chunking</value>
+  </data>
+  <data name="&gt;&gt;chunkingCheckbox.Name" xml:space="preserve">
+    <value>chunkingCheckbox</value>
+  </data>
+  <data name="&gt;&gt;chunkingCheckbox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chunkingCheckbox.Parent" xml:space="preserve">
+    <value>pMain</value>
+  </data>
+  <data name="&gt;&gt;chunkingCheckbox.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="e2eeCheckbox.Location" type="System.Drawing.Point, System.Drawing">
     <value>618, 62</value>

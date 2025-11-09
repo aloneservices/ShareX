@@ -169,6 +169,7 @@ namespace ShareX.UploadersLib
             rtbRequestURL.Text = uploader.RequestURL ?? "";
             CustomUploaderSyntaxHighlight(rtbRequestURL);
 
+            chunkingCheckbox.Checked = uploader.Chunking;
             e2eeCheckbox.Checked = uploader.Encrypt;
 
             dgvParameters.Rows.Clear();
@@ -1138,6 +1139,12 @@ namespace ShareX.UploadersLib
         private async void btnCustomUploaderURLSharingServiceTest_Click(object sender, EventArgs e)
         {
             await TestCustomUploader(CustomUploaderDestinationType.URLSharingService, Config.CustomURLSharingServiceSelected);
+        }
+
+        private void chunkingCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            CustomUploaderItem uploader = CustomUploaderGetSelected();
+            if (uploader != null) uploader.Chunking = chunkingCheckbox.Checked;
         }
 
         private void e2eeCheckbox_CheckedChanged(object sender, EventArgs e)

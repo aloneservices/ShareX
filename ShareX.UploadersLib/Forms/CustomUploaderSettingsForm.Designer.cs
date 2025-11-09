@@ -109,6 +109,7 @@
             ttHelpTip = new System.Windows.Forms.ToolTip(components);
             lblUploaders = new System.Windows.Forms.Label();
             pMain = new System.Windows.Forms.Panel();
+            chunkingCheckbox = new System.Windows.Forms.CheckBox();
             e2eeCheckbox = new System.Windows.Forms.CheckBox();
             btnTestURLSyntax = new System.Windows.Forms.Button();
             cmsHelp.SuspendLayout();
@@ -696,6 +697,7 @@
             //
             // pMain
             //
+            pMain.Controls.Add(chunkingCheckbox);
             pMain.Controls.Add(e2eeCheckbox);
             pMain.Controls.Add(btnTestURLSyntax);
             pMain.Controls.Add(pResultErrorMessage);
@@ -724,6 +726,13 @@
             pMain.Controls.Add(pBodyData);
             resources.ApplyResources(pMain, "pMain");
             pMain.Name = "pMain";
+            //
+            // chunkingCheckbox
+            //
+            resources.ApplyResources(chunkingCheckbox, "chunkingCheckbox");
+            chunkingCheckbox.Name = "chunkingCheckbox";
+            chunkingCheckbox.UseVisualStyleBackColor = true;
+            chunkingCheckbox.CheckedChanged += chunkingCheckbox_CheckedChanged;
             //
             // e2eeCheckbox
             //
@@ -869,5 +878,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cArgumentsName;
         private System.Windows.Forms.DataGridViewTextBoxColumn cArgumentsValue;
         private System.Windows.Forms.CheckBox e2eeCheckbox;
+        private System.Windows.Forms.CheckBox chunkingCheckbox;
     }
 }
