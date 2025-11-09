@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2024 ShareX Team
+    Copyright (c) 2007-2025 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -24,6 +24,7 @@
 #endregion License Information (GPL v3)
 
 using ShareX.HelpersLib;
+using ShareX.Properties;
 using System;
 using System.Drawing;
 using System.IO;
@@ -403,6 +404,14 @@ namespace ShareX
                     if (!string.IsNullOrEmpty(Config.FilePath) && FileHelpers.IsImageFile(Config.FilePath))
                     {
                         TaskHelpers.PinToScreen(Config.FilePath);
+                    }
+                    break;
+                case ToastClickAction.DeleteFile:
+                    if (!string.IsNullOrEmpty(Config.FilePath) &&
+                        MessageBox.Show(Resources.MainForm_tsmiDeleteSelectedFile_Click_Do_you_really_want_to_delete_this_file_,
+                        "ShareX - " + Resources.MainForm_tsmiDeleteSelectedFile_Click_File_delete_confirmation, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        FileHelpers.DeleteFile(Config.FilePath, true);
                     }
                     break;
             }

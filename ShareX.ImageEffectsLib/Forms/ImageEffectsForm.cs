@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2024 ShareX Team
+    Copyright (c) 2007-2025 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -376,16 +376,7 @@ namespace ShareX.ImageEffectsLib
                 if (PreviewImage != null) PreviewImage.Dispose();
                 PreviewImage = new Bitmap(size, size);
 
-                Color backgroundColor;
-
-                if (ShareXResources.UseCustomTheme)
-                {
-                    backgroundColor = ShareXResources.Theme.BackgroundColor;
-                }
-                else
-                {
-                    backgroundColor = Color.DarkGray;
-                }
+                Color backgroundColor = ShareXResources.Theme.BackgroundColor;
 
                 using (Graphics g = Graphics.FromImage(PreviewImage))
                 {

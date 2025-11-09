@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2024 ShareX Team
+    Copyright (c) 2007-2025 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -476,15 +476,8 @@ namespace ShareX
                 }
             }
 
-            SSLBypassHelper sslBypassHelper = null;
-
             try
             {
-                if (HelpersOptions.AcceptInvalidSSLCertificates)
-                {
-                    sslBypassHelper = new SSLBypassHelper();
-                }
-
                 if (!CheckUploadFilters(data, fileName))
                 {
                     switch (Info.UploadDestination)
@@ -514,11 +507,6 @@ namespace ShareX
             }
             finally
             {
-                if (sslBypassHelper != null)
-                {
-                    sslBypassHelper.Dispose();
-                }
-
                 if (Info.Result == null)
                 {
                     Info.Result = new UploadResult();
@@ -654,7 +642,7 @@ namespace ShareX
             if (Info.TaskSettings.AfterCaptureJob.HasFlag(AfterCaptureTasks.PinToScreen))
             {
                 Image imageCopy = Image.CloneSafe();
-                TaskHelpers.PinToScreen(imageCopy, Info.TaskSettings.ToolsSettingsReference.PinToScreenOptions);
+                TaskHelpers.PinToScreen(imageCopy, Info.TaskSettings);
             }
 
             if (Info.TaskSettings.AfterCaptureJob.HasFlag(AfterCaptureTasks.SendImageToPrinter))

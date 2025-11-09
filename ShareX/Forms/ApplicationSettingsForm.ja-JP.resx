@@ -130,7 +130,7 @@
     <value>Chrome 拡張機能をインストール...</value>
   </data>
   <data name="btnCheckDevBuild.Text" xml:space="preserve">
-    <value>開発中バージョンをインストール...</value>
+    <value>開発版をインストール...</value>
   </data>
   <data name="btnClipboardFormatAdd.Text" xml:space="preserve">
     <value>追加...</value>
@@ -176,9 +176,6 @@
   </data>
   <data name="btnThemeReset.Text" xml:space="preserve">
     <value>初期化...</value>
-  </data>
-  <data name="cbCheckPreReleaseUpdates.Text" xml:space="preserve">
-    <value>プレリリース版の更新を確認</value>
   </data>
   <data name="cbChromeExtensionSupport.Text" xml:space="preserve">
     <value>Chrome 拡張機能への対応を有効化</value>
@@ -360,9 +357,6 @@
   <data name="cbUseWhiteShareXIcon.Text" xml:space="preserve">
     <value>白いトレイアイコンを使用</value>
   </data>
-  <data name="cbUseCustomTheme.Text" xml:space="preserve">
-    <value>独自のテーマを使う</value>
-  </data>
   <data name="cbAutomaticallyCleanupBackupFiles.Text" xml:space="preserve">
     <value>古いバックアップファイルを自動で削除</value>
   </data>
@@ -425,5 +419,11 @@
   </data>
   <data name="lblDefaultPrinterOverride.Text" xml:space="preserve">
     <value>既定のプリンターを上書き:</value>
+  </data>
+  <data name="cbAutoCheckUpdate.Text" xml:space="preserve">
+    <value>更新を自動で確認</value>
+  </data>
+  <data name="lblUpdateChannel.Text" xml:space="preserve">
+    <value>更新するバージョン:</value>
   </data>
 </root>

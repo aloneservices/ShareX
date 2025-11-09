@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2024 ShareX Team
+    Copyright (c) 2007-2025 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -149,10 +149,7 @@ namespace ShareX.HelpersLib
 
             ShareXResources.ApplyTheme(this);
 
-            if (ShareXResources.UseCustomTheme)
-            {
-                panel.BackColor = ShareXResources.Theme.BorderColor;
-            }
+            panel.BackColor = ShareXResources.Theme.BorderColor;
         }
 
         private void MyMessageBox_Shown(object sender, EventArgs e)

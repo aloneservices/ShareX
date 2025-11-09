@@ -61,6 +61,16 @@ namespace ShareX.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap About_Logo {
+            get {
+                object obj = ResourceManager.GetObject("About_Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Changelog.
         /// </summary>
         internal static string AboutForm_AboutForm_Changelog {
@@ -75,6 +85,24 @@ namespace ShareX.Properties {
         internal static string AboutForm_AboutForm_Credits {
             get {
                 return ResourceManager.GetString("AboutForm_AboutForm_Credits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Donate.
+        /// </summary>
+        internal static string AboutForm_AboutForm_Donate {
+            get {
+                return ResourceManager.GetString("AboutForm_AboutForm_Donate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arabic.
+        /// </summary>
+        internal static string AboutForm_AboutForm_Language_ar_YE {
+            get {
+                return ResourceManager.GetString("AboutForm_AboutForm_Language_ar_YE", resourceCulture);
             }
         }
         
@@ -327,6 +355,15 @@ namespace ShareX.Properties {
         internal static string AboutForm_AboutForm_Website {
             get {
                 return ResourceManager.GetString("AboutForm_AboutForm_Website", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream ActionCompletedSound {
+            get {
+                return ResourceManager.GetStream("ActionCompletedSound", resourceCulture);
             }
         }
         
@@ -2179,16 +2216,6 @@ namespace ShareX.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap network_ip {
-            get {
-                object obj = ResourceManager.GetObject("network_ip", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap nl {
             get {
                 object obj = ResourceManager.GetObject("nl", resourceCulture);
@@ -2203,33 +2230,6 @@ namespace ShareX.Properties {
             get {
                 object obj = ResourceManager.GetObject("notebook", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The OCR output has been copied to your clipboard..
-        /// </summary>
-        internal static string OCRForm_AutoComplete {
-            get {
-                return ResourceManager.GetString("OCRForm_AutoComplete", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Error occurred during OCR processing, or no text was returned..
-        /// </summary>
-        internal static string OCRForm_AutoCompleteFail {
-            get {
-                return ResourceManager.GetString("OCRForm_AutoCompleteFail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to OCR is processing..
-        /// </summary>
-        internal static string OCRForm_AutoProcessing {
-            get {
-                return ResourceManager.GetString("OCRForm_AutoProcessing", resourceCulture);
             }
         }
         
@@ -2283,6 +2283,16 @@ namespace ShareX.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pin__minus {
+            get {
+                object obj = ResourceManager.GetObject("pin__minus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pin to screen.
         /// </summary>
         internal static string PinToScreen {
@@ -2307,6 +2317,16 @@ namespace ShareX.Properties {
         internal static System.Drawing.Bitmap pl {
             get {
                 object obj = ResourceManager.GetObject("pl", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Play {
+            get {
+                object obj = ResourceManager.GetObject("Play", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2581,6 +2601,26 @@ namespace ShareX.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tag__minus {
+            get {
+                object obj = ResourceManager.GetObject("tag__minus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tag_hash {
+            get {
+                object obj = ResourceManager.GetObject("tag_hash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream TaskCompletedSound {
@@ -2613,24 +2653,6 @@ namespace ShareX.Properties {
         internal static string TaskHelpers_ToggleHotkeys_Hotkeys_enabled_ {
             get {
                 return ResourceManager.GetString("TaskHelpers_ToggleHotkeys_Hotkeys_enabled_", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tweet successfully sent..
-        /// </summary>
-        internal static string TaskHelpers_TweetMessage_Tweet_successfully_sent_ {
-            get {
-                return ResourceManager.GetString("TaskHelpers_TweetMessage_Tweet_successfully_sent_", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Unable to find a valid Twitter account..
-        /// </summary>
-        internal static string TaskHelpers_TweetMessage_Unable_to_find_valid_Twitter_account_ {
-            get {
-                return ResourceManager.GetString("TaskHelpers_TweetMessage_Unable_to_find_valid_Twitter_account_", resourceCulture);
             }
         }
         
@@ -3202,6 +3224,16 @@ namespace ShareX.Properties {
         internal static System.Drawing.Bitmap X_white {
             get {
                 object obj = ResourceManager.GetObject("X_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ye {
+            get {
+                object obj = ResourceManager.GetObject("ye", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

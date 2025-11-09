@@ -183,12 +183,6 @@
   <data name="tsmiImageEffects.Text" xml:space="preserve">
     <value>Effets d'image...</value>
   </data>
-  <data name="tsmiHashCheck.Text" xml:space="preserve">
-    <value>Vérifier un hash...</value>
-  </data>
-  <data name="tsmiDNSChanger.Text" xml:space="preserve">
-    <value>Changeur de DNS...</value>
-  </data>
   <data name="tsmiQRCode.Text" xml:space="preserve">
     <value>Code QR...</value>
   </data>
@@ -197,9 +191,6 @@
   </data>
   <data name="tsmiRuler.Text" xml:space="preserve">
     <value>Règle...</value>
-  </data>
-  <data name="tsmiTweetMessage.Text" xml:space="preserve">
-    <value>Tweeter un message...</value>
   </data>
   <data name="tsmiMonitorTest.Text" xml:space="preserve">
     <value>Test d'écran...</value>
@@ -227,9 +218,6 @@
   </data>
   <data name="tsmiURLSharingServices.Text" xml:space="preserve">
     <value>Services de partage d'URL</value>
-  </data>
-  <data name="tsmiDestinationSettings.Text" xml:space="preserve">
-    <value>Paramètres de destination...</value>
   </data>
   <data name="tsbApplicationSettings.Text" xml:space="preserve">
     <value>Paramètres de l'application...</value>
@@ -423,12 +411,6 @@
   <data name="tsmiTrayImageEffects.Text" xml:space="preserve">
     <value>Effets d'image...</value>
   </data>
-  <data name="tsmiTrayHashCheck.Text" xml:space="preserve">
-    <value>Vérifier un hash...</value>
-  </data>
-  <data name="tsmiTrayDNSChanger.Text" xml:space="preserve">
-    <value>Changeur de DNS...</value>
-  </data>
   <data name="tsmiTrayQRCode.Text" xml:space="preserve">
     <value>Code QR...</value>
   </data>
@@ -437,9 +419,6 @@
   </data>
   <data name="tsmiTrayRuler.Text" xml:space="preserve">
     <value>Règle...</value>
-  </data>
-  <data name="tsmiTrayTweetMessage.Text" xml:space="preserve">
-    <value>Tweeter un message...</value>
   </data>
   <data name="tsmiTrayMonitorTest.Text" xml:space="preserve">
     <value>Test d'écran...</value>
@@ -688,7 +667,7 @@
     <value>2 secondes</value>
   </data>
   <data name="tsmiTrayScreenshotDelay3.Text" xml:space="preserve">
-    <value>2 secondes</value>
+    <value>3 secondes</value>
   </data>
   <data name="tsmiTrayScreenshotDelay4.Text" xml:space="preserve">
     <value>4 secondes</value>
@@ -701,9 +680,6 @@
   </data>
   <data name="tsmiTrayShowCursor.Text" xml:space="preserve">
     <value>Afficher le curseur</value>
-  </data>
-  <data name="tsmiCustomUploaderSettings.Text" xml:space="preserve">
-    <value>Paramètres de service de mise en ligne personnalisé...</value>
   </data>
   <data name="tsmiTrayCustomUploaderSettings.Text" xml:space="preserve">
     <value>Paramètres de service de mise en ligne personnalisé...</value>
@@ -720,11 +696,8 @@
   <data name="tsmiTrayScreenshotDelay0.Text" xml:space="preserve">
     <value>Aucun délai</value>
   </data>
-  <data name="tsbTwitter.Text" xml:space="preserve">
-    <value>Twitter</value>
-  </data>
   <data name="tsbDiscord.Text" xml:space="preserve">
-    <value>Discord</value>
+    <value>Discord...</value>
   </data>
   <data name="tsmiRunAction.Text" xml:space="preserve">
     <value>Exécuter action</value>
@@ -752,5 +725,68 @@
   </data>
   <data name="tsmiRestartAsAdmin.Text" xml:space="preserve">
     <value>Redémarrer ShareX en tant qu'administrateur</value>
+  </data>
+  <data name="tsmiTrayImageBeautifier.Text" xml:space="preserve">
+    <value>Embellisseur d'image...</value>
+  </data>
+  <data name="tsmiTrayImageViewer.Text" xml:space="preserve">
+    <value>Visualiseur d'image...</value>
+  </data>
+  <data name="tsmiTrayHashChecker.Text" xml:space="preserve">
+    <value>Vérificateur de hash...</value>
+  </data>
+  <data name="tsmiPinToScreen.Text" xml:space="preserve">
+    <value>Epingler à l'écran...</value>
+  </data>
+  <data name="tsmiImageBeautifier.Text" xml:space="preserve">
+    <value>Embellisseur d'image...</value>
+  </data>
+  <data name="tsmiImageViewer.Text" xml:space="preserve">
+    <value>Visualiseur d'image...</value>
+  </data>
+  <data name="tsmiHashChecker.Text" xml:space="preserve">
+    <value>Vérificateur de hash...</value>
+  </data>
+  <data name="tsmiBorderlessWindow.Text" xml:space="preserve">
+    <value>Fenêtre sans bord...</value>
+  </data>
+  <data name="tsmiInspectWindow.Text" xml:space="preserve">
+    <value>Inspecter une fenêtre...</value>
+  </data>
+  <data name="tsbX.Text" xml:space="preserve">
+    <value>Suivre @ShareX...</value>
+  </data>
+  <data name="tsmiBeautifyImage.Text" xml:space="preserve">
+    <value>Embellir l'image...</value>
+  </data>
+  <data name="tsmiPinSelectedFile.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Ctrl + P</value>
+  </data>
+  <data name="tsmiPinSelectedFile.Text" xml:space="preserve">
+    <value>Epingler à l'écran</value>
+  </data>
+  <data name="tsmiBingVisualSearch.Text" xml:space="preserve">
+    <value>Recherche visuelle Bing...</value>
+  </data>
+  <data name="tsmiCombineImagesHorizontally.Text" xml:space="preserve">
+    <value>Combiner horizontalement</value>
+  </data>
+  <data name="tsmiCombineImagesVertically.Text" xml:space="preserve">
+    <value>Combiner verticalement</value>
+  </data>
+  <data name="tsmiTrayPinToScreen.Text" xml:space="preserve">
+    <value>Epingler à l'écran...</value>
+  </data>
+  <data name="tsmiTrayBorderlessWindow.Text" xml:space="preserve">
+    <value>Fenêtre sans bord...</value>
+  </data>
+  <data name="tsmiTrayInspectWindow.Text" xml:space="preserve">
+    <value>Inspecter la fenêtre...</value>
+  </data>
+  <data name="cHotkey.HeaderText" xml:space="preserve">
+    <value>Raccourci</value>
+  </data>
+  <data name="cDescription.HeaderText" xml:space="preserve">
+    <value>Description</value>
   </data>
 </root>

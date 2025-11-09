@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2024 ShareX Team
+    Copyright (c) 2007-2025 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -39,6 +39,7 @@ namespace ShareX.ScreenCaptureLib
 
             InitializeComponent();
             ShareXResources.ApplyTheme(this, true);
+            cbScrollMethod.Items.AddRange(Helpers.GetLocalizedEnumDescriptions<ScrollMethod>());
 
             LoadOptions();
         }
@@ -48,9 +49,11 @@ namespace ShareX.ScreenCaptureLib
             nudStartDelay.SetValue(Options.StartDelay);
             cbAutoScrollTop.Checked = Options.AutoScrollTop;
             nudScrollDelay.SetValue(Options.ScrollDelay);
+            cbScrollMethod.SelectedIndex = (int)Options.ScrollMethod;
             nudScrollAmount.SetValue(Options.ScrollAmount);
             cbAutoUpload.Checked = Options.AutoUpload;
             cbShowRegion.Checked = Options.ShowRegion;
+            cbAutoIgnoreBottomEdge.Checked = Options.AutoIgnoreBottomEdge;
         }
 
         private void SaveOptions()
@@ -58,9 +61,20 @@ namespace ShareX.ScreenCaptureLib
             Options.StartDelay = (int)nudStartDelay.Value;
             Options.AutoScrollTop = cbAutoScrollTop.Checked;
             Options.ScrollDelay = (int)nudScrollDelay.Value;
+            Options.ScrollMethod = (ScrollMethod)cbScrollMethod.SelectedIndex;
             Options.ScrollAmount = (int)nudScrollAmount.Value;
             Options.AutoUpload = cbAutoUpload.Checked;
             Options.ShowRegion = cbShowRegion.Checked;
+            Options.AutoIgnoreBottomEdge = cbAutoIgnoreBottomEdge.Checked;
+        }
+
+        private void cbScrollMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool hideScrollAmount = (ScrollMethod)cbScrollMethod.SelectedIndex == ScrollMethod.PageDown;
+
+            lblScrollAmount.Visible = !hideScrollAmount;
+            nudScrollAmount.Visible = !hideScrollAmount;
+            lblScrollAmountHint.Visible = !hideScrollAmount;
         }
 
         private void btnOK_Click(object sender, EventArgs e)

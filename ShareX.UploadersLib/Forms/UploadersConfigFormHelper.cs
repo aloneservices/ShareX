@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2024 ShareX Team
+    Copyright (c) 2007-2025 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -204,47 +204,6 @@ namespace ShareX.UploadersLib
         }
 
         #endregion Photobucket
-
-        #region Google Photos
-
-        public void GooglePhotosRefreshAlbumList()
-        {
-            try
-            {
-                lvPicasaAlbumList.Items.Clear();
-
-                if (OAuth2Info.CheckOAuth(Config.GooglePhotosOAuth2Info))
-                {
-                    List<GooglePhotosAlbumInfo> albums = new GooglePhotos(Config.GooglePhotosOAuth2Info).GetAlbumList();
-
-                    if (albums != null && albums.Count > 0)
-                    {
-                        foreach (GooglePhotosAlbumInfo album in albums)
-                        {
-                            ListViewItem lvi = new ListViewItem(album.ID);
-                            lvi.SubItems.Add(album.Name ?? "");
-                            lvi.SubItems.Add(album.Summary ?? "");
-                            lvi.Tag = album;
-                            lvPicasaAlbumList.Items.Add(lvi);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                ex.ShowError();
-            }
-        }
-
-        public void GooglePhotosCreateAlbum(string albumName)
-        {
-            if (OAuth2Info.CheckOAuth(Config.GooglePhotosOAuth2Info))
-            {
-                new GooglePhotos(Config.GooglePhotosOAuth2Info).CreateAlbum(albumName);
-            }
-        }
-
-        #endregion Google Photos
 
         #region Amazon S3
 
@@ -511,7 +470,7 @@ namespace ShareX.UploadersLib
         private void FTPUpdateEnabledStates()
         {
             cbFTPImage.Enabled = cbFTPText.Enabled = cbFTPFile.Enabled = cbFTPAccounts.Enabled = cbFTPAccounts.Items.Count > 0;
-            btnFTPRemove.Enabled = btnFTPDuplicate.Enabled = gbFTPAccount.Enabled = cbFTPAccounts.SelectedIndex > -1;
+            btnFTPRemove.Enabled = btnFTPDuplicate.Enabled = btnFTPTest.Enabled = gbFTPAccount.Enabled = cbFTPAccounts.SelectedIndex > -1;
 
             FTPAccount account = FTPGetSelectedAccount();
 
@@ -563,7 +522,7 @@ namespace ShareX.UploadersLib
             }
 
             txtFTPHost.Text = account.Host;
-            nudFTPPort.Value = account.Port;
+            nudFTPPort.SetValue(account.Port);
             txtFTPUsername.Text = account.Username;
             txtFTPPassword.Text = account.Password;
 
@@ -790,184 +749,6 @@ namespace ShareX.UploadersLib
         }
 
         #endregion Pushbullet
-
-        #region Twitter
-
-        private OAuthInfo GetSelectedTwitterAccount()
-        {
-            return Config.TwitterOAuthInfoList.ReturnIfValidIndex(Config.TwitterSelectedAccount);
-        }
-
-        private bool CheckTwitterAccounts()
-        {
-            return Config.TwitterOAuthInfoList.IsValidIndex(Config.TwitterSelectedAccount);
-        }
-
-        private bool TwitterUpdateSelected()
-        {
-            Config.TwitterSelectedAccount = lbTwitterAccounts.SelectedIndex;
-
-            if (Config.TwitterSelectedAccount > -1)
-            {
-                OAuthInfo oauth = Config.TwitterOAuthInfoList[Config.TwitterSelectedAccount];
-
-                if (oauth != null)
-                {
-                    txtTwitterDescription.Enabled = true;
-                    txtTwitterDescription.Text = oauth.Description;
-                    oauthTwitter.Enabled = true;
-
-                    if (OAuthInfo.CheckOAuth(oauth))
-                    {
-                        oauthTwitter.Status = OAuthLoginStatus.LoginSuccessful;
-                    }
-                    else
-                    {
-                        oauthTwitter.Status = OAuthLoginStatus.LoginRequired;
-                    }
-
-                    return true;
-                }
-            }
-
-            txtTwitterDescription.Enabled = false;
-            txtTwitterDescription.Text = "";
-            oauthTwitter.Enabled = false;
-            return false;
-        }
-
-        private void TwitterAuthOpen()
-        {
-            if (CheckTwitterAccounts())
-            {
-                try
-                {
-                    OAuthInfo oauth = new OAuthInfo(APIKeys.TwitterConsumerKey, APIKeys.TwitterConsumerSecret);
-
-                    string url = new Twitter(oauth).GetAuthorizationURL();
-
-                    if (!string.IsNullOrEmpty(url))
-                    {
-                        oauth.Description = Config.TwitterOAuthInfoList[Config.TwitterSelectedAccount].Description;
-                        Config.TwitterOAuthInfoList[Config.TwitterSelectedAccount] = oauth;
-                        URLHelpers.OpenURL(url);
-                        DebugHelper.WriteLine("TwitterAuthOpen - Authorization URL is opened: " + url);
-                    }
-                    else
-                    {
-                        DebugHelper.WriteLine("TwitterAuthOpen - Authorization URL is empty.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ex.ShowError();
-                }
-            }
-        }
-
-        private void TwitterAuthComplete(string code)
-        {
-            if (CheckTwitterAccounts())
-            {
-                try
-                {
-                    OAuthInfo oauth = GetSelectedTwitterAccount();
-
-                    if (oauth != null && !string.IsNullOrEmpty(oauth.AuthToken) && !string.IsNullOrEmpty(oauth.AuthSecret))
-                    {
-                        bool result = new Twitter(oauth).GetAccessToken(code);
-
-                        if (result)
-                        {
-                            oauth.AuthVerifier = "";
-                            oauthTwitter.Status = OAuthLoginStatus.LoginSuccessful;
-                            MessageBox.Show(Resources.UploadersConfigForm_Login_successful, "ShareX", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            oauthTwitter.Status = OAuthLoginStatus.LoginFailed;
-                            MessageBox.Show(Resources.UploadersConfigForm_Login_failed, "ShareX", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ex.ShowError();
-                }
-            }
-        }
-
-        private void TwitterAuthClear()
-        {
-            if (CheckTwitterAccounts())
-            {
-                OAuthInfo oauth = new OAuthInfo();
-
-                OAuthInfo oauth2 = GetSelectedTwitterAccount();
-
-                if (oauth2 != null)
-                {
-                    oauth.Description = oauth2.Description;
-                }
-
-                Config.TwitterOAuthInfoList[Config.TwitterSelectedAccount] = oauth;
-            }
-        }
-
-        #endregion Twitter
-
-        #region Jira
-
-        public void JiraAuthOpen()
-        {
-            try
-            {
-                OAuthInfo oauth = new OAuthInfo(APIKeys.JiraConsumerKey);
-                oauth.SignatureMethod = OAuthInfo.OAuthInfoSignatureMethod.RSA_SHA1;
-                oauth.ConsumerPrivateKey = Jira.PrivateKey;
-
-                string url = new Jira(Config.JiraHost, oauth).GetAuthorizationURL();
-
-                if (!string.IsNullOrEmpty(url))
-                {
-                    Config.JiraOAuthInfo = oauth;
-                    URLHelpers.OpenURL(url);
-                }
-            }
-            catch (Exception ex)
-            {
-                ex.ShowError();
-            }
-        }
-
-        public void JiraAuthComplete(string code)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(code) && Config.JiraOAuthInfo != null && !string.IsNullOrEmpty(Config.JiraOAuthInfo.AuthToken) && !string.IsNullOrEmpty(Config.JiraOAuthInfo.AuthSecret))
-                {
-                    Jira jira = new Jira(Config.JiraHost, Config.JiraOAuthInfo);
-                    bool result = jira.GetAccessToken(code);
-
-                    if (result)
-                    {
-                        oAuthJira.Status = OAuthLoginStatus.LoginSuccessful;
-                        MessageBox.Show(Resources.UploadersConfigForm_Login_successful, "ShareX", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        oAuthJira.Status = OAuthLoginStatus.LoginFailed;
-                        MessageBox.Show(Resources.UploadersConfigForm_Login_failed, "ShareX", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                ex.ShowError();
-            }
-        }
-
-        #endregion Jira
 
         #region Shared folder
 

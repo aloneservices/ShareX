@@ -157,14 +157,8 @@
   <data name="UploadersConfigForm_Error" xml:space="preserve">
     <value>Error</value>
   </data>
-  <data name="AdFly" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Favicons\AdFly.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="MediaFire" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Favicons\MediaFire.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="jira" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Favicons\jira.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="UploadersConfigForm_TestFTPAccount_Connected_" xml:space="preserve">
     <value>Connected!</value>
@@ -199,9 +193,6 @@
   <data name="UploadersConfigForm_TestFTPAccount_Connected_Created_folders" xml:space="preserve">
     <value>Connected!
 Created folders:</value>
-  </data>
-  <data name="Twitter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Favicons\Twitter.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CertFileNameEditor_EditValue_Browse_for_a_certificate_file___" xml:space="preserve">
     <value>Browse for a certificate file...</value>
@@ -256,9 +247,6 @@ Created folders:</value>
   </data>
   <data name="Polr" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Favicons\Polr.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="UploadersConfigForm_oAuthJira_RefreshButtonClicked_Refresh_authorization_is_not_supported_" xml:space="preserve">
-    <value>Refresh authorization is not supported.</value>
   </data>
   <data name="Pushbullet" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Favicons\Pushbullet.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -365,9 +353,6 @@ Created folders:</value>
   <data name="Firebase" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Favicons\Firebase.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="YouTube" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Favicons\YouTube.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="GoogleCloud" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Favicons\GoogleCloud.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -434,9 +419,6 @@ Created folders:</value>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
-  <data name="GooglePhotos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\favicons\googlephotos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="LobFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Favicons\LobFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -448,5 +430,8 @@ Created folders:</value>
   </data>
   <data name="Connect" xml:space="preserve">
     <value>Connect...</value>
+  </data>
+  <data name="YouTube" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Favicons\YouTube.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2024 ShareX Team
+    Copyright (c) 2007-2025 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -69,9 +69,26 @@ namespace ShareX
 
         private void CaptureInternal(TaskSettings taskSettings, bool autoHideForm)
         {
+            bool wait = false;
+            bool showDesktopIcons = false;
+            bool showMainForm = false;
+
+            if (taskSettings.CaptureSettings.CaptureAutoHideDesktopIcons && !CaptureHelpers.IsActiveWindowFullscreen() && DesktopIconManager.AreDesktopIconsVisible())
+            {
+                DesktopIconManager.SetDesktopIconsVisibility(false);
+                showDesktopIcons = true;
+                wait = true;
+            }
+
             if (autoHideForm && AllowAutoHideForm)
             {
                 Program.MainForm.Hide();
+                showMainForm = true;
+                wait = true;
+            }
+
+            if (wait)
+            {
                 Thread.Sleep(250);
             }
 
@@ -88,7 +105,12 @@ namespace ShareX
             }
             finally
             {
-                if (autoHideForm && AllowAutoHideForm)
+                if (showDesktopIcons)
+                {
+                    DesktopIconManager.SetDesktopIconsVisibility(true);
+                }
+
+                if (showMainForm)
                 {
                     Program.MainForm.ForceActivate();
                 }
@@ -101,10 +123,7 @@ namespace ShareX
         {
             if (metadata != null && metadata.Image != null)
             {
-                if (taskSettings.GeneralSettings.PlaySoundAfterCapture)
-                {
-                    TaskHelpers.PlayCaptureSound(taskSettings);
-                }
+                TaskHelpers.PlayNotificationSoundAsync(NotificationSound.Capture, taskSettings);
 
                 if (taskSettings.AfterCaptureJob.HasFlag(AfterCaptureTasks.AnnotateImage) && !AllowAnnotation)
                 {

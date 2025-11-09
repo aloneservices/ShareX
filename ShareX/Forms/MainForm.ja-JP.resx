@@ -222,12 +222,6 @@
   <data name="tsmiImageViewer.Text" xml:space="preserve">
     <value>画像ビューア...</value>
   </data>
-  <data name="tsmiHashCheck.Text" xml:space="preserve">
-    <value>ハッシュ値の照合...</value>
-  </data>
-  <data name="tsmiDNSChanger.Text" xml:space="preserve">
-    <value>DNS 変更...</value>
-  </data>
   <data name="tsmiQRCode.Text" xml:space="preserve">
     <value>QR コード...</value>
   </data>
@@ -235,7 +229,7 @@
     <value>定規...</value>
   </data>
   <data name="tsmiIndexFolder.Text" xml:space="preserve">
-    <value>フォルダーのインデックス作成...</value>
+    <value>フォルダ内一覧の作成...</value>
   </data>
   <data name="tsmiImageCombiner.Text" xml:space="preserve">
     <value>画像の結合...</value>
@@ -245,9 +239,6 @@
   </data>
   <data name="tsmiVideoThumbnailer.Text" xml:space="preserve">
     <value>動画のサムネイル作成...</value>
-  </data>
-  <data name="tsmiTweetMessage.Text" xml:space="preserve">
-    <value>メッセージをツイート...</value>
   </data>
   <data name="tsmiMonitorTest.Text" xml:space="preserve">
     <value>モニター テスト...</value>
@@ -275,9 +266,6 @@
   </data>
   <data name="tsmiURLSharingServices.Text" xml:space="preserve">
     <value>URL共有サービス</value>
-  </data>
-  <data name="tsmiDestinationSettings.Text" xml:space="preserve">
-    <value>アップロード先の設定...</value>
   </data>
   <data name="tsbTaskSettings.Text" xml:space="preserve">
     <value>タスクの設定...</value>
@@ -349,7 +337,7 @@
     <value>一覧からタスクを取り除く</value>
   </data>
   <data name="tsmiDeleteSelectedFile.Text" xml:space="preserve">
-    <value>ローカル ファイルを削除...</value>
+    <value>ファイルを削除...</value>
   </data>
   <data name="tsmiShortenSelectedURL.Text" xml:space="preserve">
     <value>短縮URLの作成</value>
@@ -540,12 +528,6 @@
   <data name="tsmiTrayImageEffects.Text" xml:space="preserve">
     <value>画像エフェクト...</value>
   </data>
-  <data name="tsmiTrayHashCheck.Text" xml:space="preserve">
-    <value>ハッシュ値の照合...</value>
-  </data>
-  <data name="tsmiTrayDNSChanger.Text" xml:space="preserve">
-    <value>DNS 変更...</value>
-  </data>
   <data name="tsmiTrayQRCode.Text" xml:space="preserve">
     <value>QR コード...</value>
   </data>
@@ -553,7 +535,7 @@
     <value>定規...</value>
   </data>
   <data name="tsmiTrayIndexFolder.Text" xml:space="preserve">
-    <value>フォルダーのインデックス作成...</value>
+    <value>フォルダ内一覧の作成...</value>
   </data>
   <data name="tsmiTrayImageCombiner.Text" xml:space="preserve">
     <value>画像の結合...</value>
@@ -563,9 +545,6 @@
   </data>
   <data name="tsmiTrayVideoThumbnailer.Text" xml:space="preserve">
     <value>動画のサムネイル作成...</value>
-  </data>
-  <data name="tsmiTrayTweetMessage.Text" xml:space="preserve">
-    <value>メッセージをツイート...</value>
   </data>
   <data name="tsmiTrayMonitorTest.Text" xml:space="preserve">
     <value>モニター テスト...</value>
@@ -675,9 +654,6 @@
   <data name="tsmiVideoConverter.Text" xml:space="preserve">
     <value>動画の変換...</value>
   </data>
-  <data name="tsmiCustomUploaderSettings.Text" xml:space="preserve">
-    <value>アップロード先を自分で設定...</value>
-  </data>
   <data name="tsmiAddImageEffects.Text" xml:space="preserve">
     <value>画像エフェクトを追加...</value>
   </data>
@@ -717,9 +693,6 @@
   <data name="tsmiInspectWindow.Text" xml:space="preserve">
     <value>ウィンドウの調査...</value>
   </data>
-  <data name="tsmiGoogleImageSearch.Text" xml:space="preserve">
-    <value>Google画像検索...</value>
-  </data>
   <data name="tsmiCombineImagesHorizontally.Text" xml:space="preserve">
     <value>横に並べて結合</value>
   </data>
@@ -746,5 +719,26 @@
   </data>
   <data name="tsmiTrayBorderlessWindow.Text" xml:space="preserve">
     <value>ボーダーレスウィンドウ...</value>
+  </data>
+  <data name="tsbX.Text" xml:space="preserve">
+    <value>@ShareXをフォロー...</value>
+  </data>
+  <data name="cHotkey.HeaderText" xml:space="preserve">
+    <value>ホットキー</value>
+  </data>
+  <data name="cDescription.HeaderText" xml:space="preserve">
+    <value>説明</value>
+  </data>
+  <data name="tsmiTrayHashChecker.Text" xml:space="preserve">
+    <value>ハッシュ値の照合...</value>
+  </data>
+  <data name="tsmiHashChecker.Text" xml:space="preserve">
+    <value>ハッシュ値の照合...</value>
+  </data>
+  <data name="tsmiImageBeautifier.Text" xml:space="preserve">
+    <value>画像装飾...</value>
+  </data>
+  <data name="tsmiTrayImageBeautifier.Text" xml:space="preserve">
+    <value>画像装飾...</value>
   </data>
 </root>

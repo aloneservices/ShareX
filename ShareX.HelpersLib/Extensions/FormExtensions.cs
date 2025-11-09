@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2024 ShareX Team
+    Copyright (c) 2007-2025 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -56,20 +56,24 @@ namespace ShareX.HelpersLib
 
         public static void CloseOnEscape(this Form form)
         {
+            bool escapePressed = false;
+
             form.KeyPreview = true;
 
             form.KeyDown += (sender, e) =>
             {
                 if (e.KeyCode == Keys.Escape)
                 {
+                    escapePressed = true;
                     e.SuppressKeyPress = true;
                 }
             };
 
             form.KeyUp += (sender, e) =>
             {
-                if (e.KeyCode == Keys.Escape)
+                if (e.KeyCode == Keys.Escape && escapePressed)
                 {
+                    escapePressed = false;
                     form.DialogResult = DialogResult.Cancel;
                     form.Close();
                 }
@@ -282,29 +286,22 @@ namespace ShareX.HelpersLib
 
                 lv.DrawColumnHeader += (sender, e) =>
                 {
-                    if (ShareXResources.UseCustomTheme)
+                    using (Brush brush = new SolidBrush(ShareXResources.Theme.BackgroundColor))
                     {
-                        using (Brush brush = new SolidBrush(ShareXResources.Theme.BackgroundColor))
-                        {
-                            e.Graphics.FillRectangle(brush, e.Bounds);
-                        }
-
-                        TextRenderer.DrawText(e.Graphics, e.Header.Text, e.Font, e.Bounds.LocationOffset(2, 0).SizeOffset(-4, 0), ShareXResources.Theme.TextColor,
-                            TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis);
-
-                        if (e.Bounds.Right < lv.ClientRectangle.Right)
-                        {
-                            using (Pen pen = new Pen(ShareXResources.Theme.SeparatorDarkColor))
-                            using (Pen pen2 = new Pen(ShareXResources.Theme.SeparatorLightColor))
-                            {
-                                e.Graphics.DrawLine(pen, e.Bounds.Right - 2, e.Bounds.Top, e.Bounds.Right - 2, e.Bounds.Bottom - 1);
-                                e.Graphics.DrawLine(pen2, e.Bounds.Right - 1, e.Bounds.Top, e.Bounds.Right - 1, e.Bounds.Bottom - 1);
-                            }
-                        }
+                        e.Graphics.FillRectangle(brush, e.Bounds);
                     }
-                    else
+
+                    TextRenderer.DrawText(e.Graphics, e.Header.Text, e.Font, e.Bounds.LocationOffset(2, 0).SizeOffset(-4, 0), ShareXResources.Theme.TextColor,
+                        TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis);
+
+                    if (e.Bounds.Right < lv.ClientRectangle.Right)
                     {
-                        e.DrawDefault = true;
+                        using (Pen pen = new Pen(ShareXResources.Theme.SeparatorDarkColor))
+                        using (Pen pen2 = new Pen(ShareXResources.Theme.SeparatorLightColor))
+                        {
+                            e.Graphics.DrawLine(pen, e.Bounds.Right - 2, e.Bounds.Top, e.Bounds.Right - 2, e.Bounds.Bottom - 1);
+                            e.Graphics.DrawLine(pen2, e.Bounds.Right - 1, e.Bounds.Top, e.Bounds.Right - 1, e.Bounds.Bottom - 1);
+                        }
                     }
                 };
             }
@@ -476,6 +473,16 @@ namespace ShareX.HelpersLib
             tabControl.Enabled = false;
             tabControl.SelectedTab = tabPage;
             tabControl.Enabled = true;
+        }
+
+        public static DialogResult ShowDialogTopMost(this Form form, Form owner)
+        {
+            if (owner != null && owner.TopMost)
+            {
+                form.TopMost = true;
+            }
+
+            return form.ShowDialog(owner);
         }
     }
 }

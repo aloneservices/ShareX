@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2024 ShareX Team
+    Copyright (c) 2007-2025 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -3427,5 +3427,16 @@ namespace ShareX.HelpersLib
         HTVSCROLL = 7,
         /// <summary>In a Maximize button.</summary>
         HTZOOM = 9,
+    }
+
+    [Flags]
+    public enum SIIGBF
+    {
+        SIIGBF_RESIZETOFIT = 0x00,
+        SIIGBF_BIGGERSIZEOK = 0x01,
+        SIIGBF_MEMORYONLY = 0x02,
+        SIIGBF_ICONONLY = 0x04,
+        SIIGBF_THUMBNAILONLY = 0x08,
+        SIIGBF_INCACHEONLY = 0x10
     }
 }

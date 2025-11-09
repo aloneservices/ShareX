@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2024 ShareX Team
+    Copyright (c) 2007-2025 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -154,7 +154,6 @@ namespace ShareX.UploadersLib
             LoadTextUploaderSettings();
             LoadFileUploaderSettings();
             LoadURLShortenerSettings();
-            LoadOtherUploaderSettings();
         }
 
         private void LoadImageUploaderSettings()
@@ -223,16 +222,6 @@ namespace ShareX.UploadersLib
             }
 
             #endregion Photobucket
-
-            #region Google Photos
-
-            oauth2GooglePhotos.UpdateStatus(Config.GooglePhotosOAuth2Info, Config.GooglePhotosUserInfo);
-            btnPicasaRefreshAlbumList.Enabled = oauth2GooglePhotos.Connected;
-
-            cbGooglePhotosIsPublic.Checked = Config.GooglePhotosIsPublic;
-            txtPicasaAlbumID.Text = Config.GooglePhotosAlbumID;
-
-            #endregion Google Photos
 
             #region Chevereto
 
@@ -385,22 +374,25 @@ namespace ShareX.UploadersLib
             #region Google Drive
 
             oauth2GoogleDrive.UpdateStatus(Config.GoogleDriveOAuth2Info, Config.GoogleDriveUserInfo);
-            btnGoogleDriveRefreshFolders.Enabled = oauth2GoogleDrive.Connected;
+            //btnGoogleDriveRefreshFolders.Enabled = oauth2GoogleDrive.Connected;
 
             cbGoogleDriveIsPublic.Checked = Config.GoogleDriveIsPublic;
             cbGoogleDriveDirectLink.Checked = Config.GoogleDriveDirectLink;
 
+            /*
             cbGoogleDriveSharedDrive.Items.Clear();
             cbGoogleDriveSharedDrive.Items.Add(GoogleDrive.MyDrive);
             if (Config.GoogleDriveSelectedDrive?.id != GoogleDrive.MyDrive.id)
             {
                 cbGoogleDriveSharedDrive.Items.Add(Config.GoogleDriveSelectedDrive);
             }
+            */
 
             cbGoogleDriveUseFolder.Checked = Config.GoogleDriveUseFolder;
             txtGoogleDriveFolderID.Enabled = Config.GoogleDriveUseFolder;
+            btnGoogleDriveFolderIDHelp.Enabled = Config.GoogleDriveUseFolder;
             txtGoogleDriveFolderID.Text = Config.GoogleDriveFolderID;
-            GoogleDriveSelectConfigDrive();
+            //GoogleDriveSelectConfigDrive();
 
             #endregion Google Drive
 
@@ -470,42 +462,6 @@ namespace ShareX.UploadersLib
 
             #endregion Shared folder
 
-            #region Jira
-
-            txtJiraHost.Text = Config.JiraHost;
-            txtJiraIssuePrefix.Text = Config.JiraIssuePrefix;
-
-            try
-            {
-                txtJiraConfigHelp.Text = string.Format(@"How to configure your Jira server:
-
-- Go to 'Administration' -> 'Add-ons'
-- Select 'Application Links'
-
-- Add a new 'Application Link' with following settings:
-    - Server URL: {0}
-    - Application Name: {1}
-    - Application Type: Generic Application
-
-- Now, you have to configure Incoming Authentication
-        - Consumer Key: {2}
-        - Consumer Name: {1}
-        - Public Key (without quotes): '{3}'
-
-- You can now authenticate to Jira", Links.Website, "ShareX", APIKeys.JiraConsumerKey, Jira.PublicKey);
-            }
-            catch (Exception e)
-            {
-                DebugHelper.WriteException(e);
-            }
-
-            if (OAuthInfo.CheckOAuth(Config.JiraOAuthInfo))
-            {
-                oAuthJira.Status = OAuthLoginStatus.LoginSuccessful;
-            }
-
-            #endregion Jira
-
             #region Mega
 
             MegaConfigureTab(false);
@@ -570,7 +526,7 @@ namespace ShareX.UploadersLib
             txtOwnCloudUsername.Text = Config.OwnCloudUsername;
             txtOwnCloudPassword.Text = Config.OwnCloudPassword;
             txtOwnCloudPath.Text = Config.OwnCloudPath;
-            txtOwnCloudExpiryTime.Value = Config.OwnCloudExpiryTime;
+            nudOwnCloudExpiryTime.SetValue(Config.OwnCloudExpiryTime);
             cbOwnCloudCreateShare.Checked = Config.OwnCloudCreateShare;
             cbOwnCloudDirectLink.Checked = Config.OwnCloudDirectLink;
             cbOwnCloudAppendFileNameToURL.Checked = Config.OwnCloudAppendFileNameToURL;
@@ -622,7 +578,6 @@ namespace ShareX.UploadersLib
             cbSeafileCreateShareableURL.Checked = Config.SeafileCreateShareableURL;
             cbSeafileCreateShareableURLRaw.Checked = Config.SeafileCreateShareableURLRaw;
             cbSeafileCreateShareableURLRaw.Enabled = cbSeafileCreateShareableURL.Checked;
-            cbSeafileIgnoreInvalidCert.Checked = Config.SeafileIgnoreInvalidCert;
             nudSeafileExpireDays.SetValue(Config.SeafileShareDaysToExpire);
             txtSeafileSharePassword.Text = Config.SeafileSharePassword;
             txtSeafileAccInfoEmail.Text = Config.SeafileAccInfoEmail;
@@ -682,7 +637,7 @@ namespace ShareX.UploadersLib
             cbPlikIsSecured.Checked = Config.PlikSettings.IsSecured;
             cbPlikRemovable.Checked = Config.PlikSettings.Removable;
             cbPlikOneShot.Checked = Config.PlikSettings.OneShot;
-            nudPlikTTL.Value = Config.PlikSettings.TTL;
+            nudPlikTTL.SetValue(Config.PlikSettings.TTL);
             cbPlikTTLUnit.SelectedIndex = Config.PlikSettings.TTLUnit;
             txtPlikComment.ReadOnly = !cbPlikComment.Checked;
             txtPlikLogin.ReadOnly = !cbPlikIsSecured.Checked;
@@ -741,13 +696,6 @@ namespace ShareX.UploadersLib
 
             #endregion yourls.org
 
-            #region adf.ly
-
-            txtAdflyAPIKEY.Text = Config.AdFlyAPIKEY;
-            txtAdflyAPIUID.Text = Config.AdFlyAPIUID;
-
-            #endregion adf.ly
-
             #region Polr
 
             txtPolrAPIHostname.Text = Config.PolrAPIHostname;
@@ -781,30 +729,6 @@ namespace ShareX.UploadersLib
             txtZWSToken.Text = Config.ZeroWidthShortenerToken;
 
             #endregion
-        }
-
-        private void LoadOtherUploaderSettings()
-        {
-            #region Twitter
-
-            lbTwitterAccounts.Items.Clear();
-
-            foreach (OAuthInfo twitterOAuth in Config.TwitterOAuthInfoList)
-            {
-                lbTwitterAccounts.Items.Add(twitterOAuth.Description);
-            }
-
-            if (CheckTwitterAccounts())
-            {
-                lbTwitterAccounts.SelectedIndex = Config.TwitterSelectedAccount;
-            }
-
-            TwitterUpdateSelected();
-
-            cbTwitterSkipMessageBox.Checked = Config.TwitterSkipMessageBox;
-            txtTwitterDefaultMessage.Text = Config.TwitterDefaultMessage;
-
-            #endregion Twitter
         }
 
         #region Image uploaders
@@ -1008,67 +932,6 @@ namespace ShareX.UploadersLib
         }
 
         #endregion Photobucket
-
-        #region Google Photos
-
-        private void oauth2GooglePhotos_ConnectButtonClicked()
-        {
-            OAuth2Info oauth = new OAuth2Info(APIKeys.GoogleClientID, APIKeys.GoogleClientSecret);
-            IOAuth2Loopback oauthLoopback = new GooglePhotos(oauth).OAuth2;
-
-            using (OAuthListenerForm form = new OAuthListenerForm(oauthLoopback))
-            {
-                form.ShowDialog();
-                Config.GooglePhotosOAuth2Info = form.OAuth2Info;
-                Config.GooglePhotosUserInfo = form.UserInfo;
-            }
-
-            oauth2GooglePhotos.UpdateStatus(Config.GooglePhotosOAuth2Info, Config.GooglePhotosUserInfo);
-            btnPicasaRefreshAlbumList.Enabled = oauth2GooglePhotos.Connected;
-
-            this.ForceActivate();
-        }
-
-        private void oauth2GooglePhotos_DisconnectButtonClicked()
-        {
-            Config.GooglePhotosOAuth2Info = null;
-            Config.GooglePhotosUserInfo = null;
-        }
-
-        private void txtPicasaAlbumID_TextChanged(object sender, EventArgs e)
-        {
-            Config.GooglePhotosAlbumID = txtPicasaAlbumID.Text;
-        }
-
-        private void btnPicasaRefreshAlbumList_Click(object sender, EventArgs e)
-        {
-            GooglePhotosRefreshAlbumList();
-        }
-
-        private void lvPicasaAlbumList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lvPicasaAlbumList.SelectedItems.Count > 0)
-            {
-                ListViewItem lvi = lvPicasaAlbumList.SelectedItems[0];
-                if (lvi.Tag is GooglePhotosAlbumInfo album)
-                {
-                    txtPicasaAlbumID.Text = album.ID;
-                }
-            }
-        }
-
-        private void cbGooglePhotosIsPublic_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.GooglePhotosIsPublic = cbGooglePhotosIsPublic.Checked;
-        }
-
-        private void btnGooglePhotosCreateAlbum_Click(object sender, EventArgs e)
-        {
-            GooglePhotosCreateAlbum(txtGooglePhotosCreateAlbumName.Text);
-            GooglePhotosRefreshAlbumList();
-        }
-
-        #endregion Google Photos
 
         #region Chevereto
 
@@ -1679,7 +1542,7 @@ namespace ShareX.UploadersLib
             }
 
             oauth2GoogleDrive.UpdateStatus(Config.GoogleDriveOAuth2Info, Config.GoogleDriveUserInfo);
-            btnGoogleDriveRefreshFolders.Enabled = oauth2GoogleDrive.Connected;
+            //btnGoogleDriveRefreshFolders.Enabled = oauth2GoogleDrive.Connected;
 
             this.ForceActivate();
         }
@@ -1704,11 +1567,20 @@ namespace ShareX.UploadersLib
         {
             Config.GoogleDriveUseFolder = cbGoogleDriveUseFolder.Checked;
             txtGoogleDriveFolderID.Enabled = Config.GoogleDriveUseFolder;
+            btnGoogleDriveFolderIDHelp.Enabled = Config.GoogleDriveUseFolder;
         }
 
         private void txtGoogleDriveFolderID_TextChanged(object sender, EventArgs e)
         {
             Config.GoogleDriveFolderID = txtGoogleDriveFolderID.Text;
+        }
+
+        private void btnGoogleDriveFolderIDHelp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(@"Unfortunately, Google has forced us to use a more restrictive API scope, which does not allow us to see files or folders anymore. Because of this, we cannot provide folder listing and selection anymore.
+
+However, there is a workaround. You can navigate to the Google Drive website in your browser, open the folder you want to upload to, and then copy the folder ID from the browser's address bar to here.",
+"ShareX - Google Drive", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
         private void btnGoogleDriveRefreshFolders_Click(object sender, EventArgs e)
@@ -1966,40 +1838,6 @@ namespace ShareX.UploadersLib
 
         #endregion Localhostr
 
-        #region Jira
-
-        private void txtJiraHost_TextChanged(object sender, EventArgs e)
-        {
-            Config.JiraHost = txtJiraHost.Text;
-        }
-
-        private void txtJiraIssuePrefix_TextChanged(object sender, EventArgs e)
-        {
-            Config.JiraIssuePrefix = txtJiraIssuePrefix.Text;
-        }
-
-        private void oAuthJira_OpenButtonClicked()
-        {
-            JiraAuthOpen();
-        }
-
-        private void oAuthJira_CompleteButtonClicked(string code)
-        {
-            JiraAuthComplete(code);
-        }
-
-        private void oAuthJira_ClearButtonClicked()
-        {
-            Config.JiraOAuthInfo = null;
-        }
-
-        private void oAuthJira_RefreshButtonClicked()
-        {
-            MessageBox.Show(Resources.UploadersConfigForm_oAuthJira_RefreshButtonClicked_Refresh_authorization_is_not_supported_, "ShareX", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        #endregion Jira
-
         #region Mega
 
         private void MegaConfigureTab(bool tryLogin)
@@ -2227,9 +2065,9 @@ namespace ShareX.UploadersLib
             Config.OwnCloudPath = txtOwnCloudPath.Text;
         }
 
-        private void txtOwnExpiryTime_TextChanged(object sender, EventArgs e)
+        private void nudOwnExpiryTime_TextChanged(object sender, EventArgs e)
         {
-            Config.OwnCloudExpiryTime = Convert.ToInt32(txtOwnCloudExpiryTime.Value);
+            Config.OwnCloudExpiryTime = Convert.ToInt32(nudOwnCloudExpiryTime.Value);
         }
 
         private void cbOwnCloudCreateShare_CheckedChanged(object sender, EventArgs e)
@@ -2511,11 +2349,6 @@ namespace ShareX.UploadersLib
         private void cbSeafileCreateShareableURLRaw_CheckedChanged(object sender, EventArgs e)
         {
             Config.SeafileCreateShareableURLRaw = cbSeafileCreateShareableURLRaw.Checked;
-        }
-
-        private void cbSeafileIgnoreInvalidCert_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.SeafileIgnoreInvalidCert = cbSeafileIgnoreInvalidCert.Checked;
         }
 
         private void btnRefreshSeafileAccInfo_Click(object sender, EventArgs e)
@@ -3053,25 +2886,6 @@ namespace ShareX.UploadersLib
 
         #endregion yourls.org
 
-        #region adf.ly
-
-        private void txtAdflyAPIKEY_TextChanged(object sender, EventArgs e)
-        {
-            Config.AdFlyAPIKEY = txtAdflyAPIKEY.Text;
-        }
-
-        private void txtAdflyAPIUID_TextChanged(object sender, EventArgs e)
-        {
-            Config.AdFlyAPIUID = txtAdflyAPIUID.Text;
-        }
-
-        private void llAdflyLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            URLHelpers.OpenURL("https://adf.ly/publisher/tools#tools-api");
-        }
-
-        #endregion adf.ly
-
         #region Polr
 
         private void txtPolrAPIHostname_TextChanged(object sender, EventArgs e)
@@ -3159,82 +2973,5 @@ namespace ShareX.UploadersLib
         #endregion
 
         #endregion URL shorteners
-
-        #region Other uploaders
-
-        #region Twitter
-
-        private void btnTwitterAdd_Click(object sender, EventArgs e)
-        {
-            OAuthInfo oauth = new OAuthInfo();
-            Config.TwitterOAuthInfoList.Add(oauth);
-            lbTwitterAccounts.Items.Add(oauth.Description);
-            lbTwitterAccounts.SelectedIndex = lbTwitterAccounts.Items.Count - 1;
-
-            TwitterUpdateSelected();
-        }
-
-        private void btnTwitterRemove_Click(object sender, EventArgs e)
-        {
-            int selected = lbTwitterAccounts.SelectedIndex;
-
-            if (selected > -1)
-            {
-                lbTwitterAccounts.Items.RemoveAt(selected);
-                Config.TwitterOAuthInfoList.RemoveAt(selected);
-
-                if (lbTwitterAccounts.Items.Count > 0)
-                {
-                    lbTwitterAccounts.SelectedIndex = selected >= lbTwitterAccounts.Items.Count ? lbTwitterAccounts.Items.Count - 1 : selected;
-                }
-            }
-
-            TwitterUpdateSelected();
-        }
-
-        private void lbTwitterAccounts_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            TwitterUpdateSelected();
-        }
-
-        private void btnTwitterNameUpdate_Click(object sender, EventArgs e)
-        {
-            OAuthInfo oauth = GetSelectedTwitterAccount();
-
-            if (oauth != null)
-            {
-                oauth.Description = txtTwitterDescription.Text;
-                lbTwitterAccounts.Items[lbTwitterAccounts.SelectedIndex] = oauth.Description;
-            }
-        }
-
-        private void oauthTwitter_OpenButtonClicked()
-        {
-            TwitterAuthOpen();
-        }
-
-        private void oauthTwitter_CompleteButtonClicked(string code)
-        {
-            TwitterAuthComplete(code);
-        }
-
-        private void oauthTwitter_ClearButtonClicked()
-        {
-            TwitterAuthClear();
-        }
-
-        private void cbTwitterSkipMessageBox_CheckedChanged(object sender, EventArgs e)
-        {
-            Config.TwitterSkipMessageBox = cbTwitterSkipMessageBox.Checked;
-        }
-
-        private void txtTwitterDefaultMessage_TextChanged(object sender, EventArgs e)
-        {
-            Config.TwitterDefaultMessage = txtTwitterDefaultMessage.Text;
-        }
-
-        #endregion Twitter
-
-        #endregion Other uploaders
     }
 }

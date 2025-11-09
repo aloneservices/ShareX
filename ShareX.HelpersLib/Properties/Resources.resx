@@ -240,9 +240,6 @@
   <data name="ReplCodeMenuEntry_ms_Current_millisecond" xml:space="preserve">
     <value>Millisecond</value>
   </data>
-  <data name="ResponseType_RedirectionURL" xml:space="preserve">
-    <value>Redirection URL</value>
-  </data>
   <data name="DownloaderForm_fileDownloader_DownloadCompleted_Install" xml:space="preserve">
     <value>Install</value>
   </data>
@@ -285,9 +282,6 @@
   <data name="HotkeyType_Category_Upload" xml:space="preserve">
     <value>Upload</value>
   </data>
-  <data name="DNSChangerForm_btnSave_Click_Setting_DNS_failed_with_error_code_" xml:space="preserve">
-    <value>Setting DNS failed with error code:</value>
-  </data>
   <data name="Extensions_AddContextMenu_Cut" xml:space="preserve">
     <value>Cut</value>
   </data>
@@ -311,9 +305,6 @@
   </data>
   <data name="HotkeyType_ScreenRecorderGIFCustomRegion" xml:space="preserve">
     <value>Start/Stop screen recording (GIF) using pre configured region</value>
-  </data>
-  <data name="DNSChangerForm_btnSave_Click_DNS_successfully_set_" xml:space="preserve">
-    <value>DNS successfully set.</value>
   </data>
   <data name="HotkeyType_CustomRegion" xml:space="preserve">
     <value>Capture pre configured region</value>
@@ -434,12 +425,6 @@ Would you like to download it?</value>
   <data name="ReplCodeMenuEntry_ia_Auto_increment_alphanumeric" xml:space="preserve">
     <value>Auto increment alphanumeric case-insensitive (0 pad left using {n})</value>
   </data>
-  <data name="DNSChangerForm_btnSave_Click_Setting_DNS_failed_" xml:space="preserve">
-    <value>Setting DNS failed.</value>
-  </data>
-  <data name="DNSChangerForm_DNSChangerForm_Manual" xml:space="preserve">
-    <value>Manual</value>
-  </data>
   <data name="AfterCaptureTasks_AddImageEffects" xml:space="preserve">
     <value>Add image effects</value>
   </data>
@@ -469,9 +454,6 @@ Would you like to download it?</value>
   </data>
   <data name="ShapeType_RegionEllipse" xml:space="preserve">
     <value>Ellipse region</value>
-  </data>
-  <data name="HotkeyType_DNSChanger" xml:space="preserve">
-    <value>DNS changer</value>
   </data>
   <data name="HotkeyType_ScreenRecorderGIF" xml:space="preserve">
     <value>Start/Stop screen recording (GIF)</value>
@@ -505,9 +487,6 @@ Would you like to download it?</value>
   </data>
   <data name="LinearGradientMode_BackwardDiagonal" xml:space="preserve">
     <value>Backward diagonal</value>
-  </data>
-  <data name="ResponseType_Text" xml:space="preserve">
-    <value>Response text</value>
   </data>
   <data name="ShapeType_DrawingCursor" xml:space="preserve">
     <value>Cursor</value>
@@ -554,9 +533,6 @@ Would you like to download it?</value>
   <data name="ScreenRecordGIFEncoding_FFmpeg" xml:space="preserve">
     <value>FFmpeg (Good quality)</value>
   </data>
-  <data name="HotkeyType_TweetMessage" xml:space="preserve">
-    <value>Tweet message</value>
-  </data>
   <data name="DrawImageSizeMode_DontResize" xml:space="preserve">
     <value>Don't resize</value>
   </data>
@@ -575,11 +551,6 @@ Would you like to download it?</value>
   <data name="MyPictureBox_LoadImageAsync_Loading_image___" xml:space="preserve">
     <value>Loading image...</value>
   </data>
-  <data name="DownloaderForm_ChangeProgress_Progress" xml:space="preserve">
-    <value>Progress: {0:0.0}%
-Download speed: {1:0.0} KB/s
-File size: {2:n0} / {3:n0} KB</value>
-  </data>
   <data name="HotkeyType_LastRegion" xml:space="preserve">
     <value>Capture last region</value>
   </data>
@@ -593,7 +564,7 @@ File size: {2:n0} / {3:n0} KB</value>
     <value>Email</value>
   </data>
   <data name="adjectives" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\adjectives.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+    <value>..\Resources\adjectives.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
   </data>
   <data name="UpdateMessageBox_UpdateMessageBox_" xml:space="preserve">
     <value>A newer version of {0} is available.
@@ -618,7 +589,7 @@ Would you like to download and install it?</value>
     <value>Paste</value>
   </data>
   <data name="HotkeyType_QRCodeDecodeFromScreen" xml:space="preserve">
-    <value>QR code (Decode from screen)</value>
+    <value>QR code (Scan screen)</value>
   </data>
   <data name="LinearGradientMode_ForwardDiagonal" xml:space="preserve">
     <value>Forward diagonal</value>
@@ -645,7 +616,7 @@ Would you like to download and install it?</value>
     <value>Save thumbnail image to file</value>
   </data>
   <data name="DownloaderForm_StartDownload_Downloading_" xml:space="preserve">
-    <value>Downloading.</value>
+    <value>Downloading...</value>
   </data>
   <data name="RegionCaptureAction_RemoveShapeCancelCapture" xml:space="preserve">
     <value>Remove shape or cancel capture</value>
@@ -670,9 +641,6 @@ Would you like to download and install it?</value>
   </data>
   <data name="CustomUploaderDestinationType_URLSharingService" xml:space="preserve">
     <value>URL sharing service</value>
-  </data>
-  <data name="ResponseType_LocationHeader" xml:space="preserve">
-    <value>Location header</value>
   </data>
   <data name="ShapeType_EffectHighlight" xml:space="preserve">
     <value>Highlight (H)</value>
@@ -705,7 +673,7 @@ Would you like to download and install it?</value>
     <value>Process name of window</value>
   </data>
   <data name="DownloaderForm_DownloaderForm_Waiting_" xml:space="preserve">
-    <value>Waiting.</value>
+    <value>Waiting...</value>
   </data>
   <data name="HotkeyType_ImageEditor" xml:space="preserve">
     <value>Image editor</value>
@@ -718,9 +686,6 @@ Would you like to download and install it?</value>
   </data>
   <data name="ShapeType_ToolSelect" xml:space="preserve">
     <value>Select and move (M)</value>
-  </data>
-  <data name="ResponseType_Headers" xml:space="preserve">
-    <value>Response headers</value>
   </data>
   <data name="ReplCodeMenuEntry_ib_Auto_increment_base_alphanumeric" xml:space="preserve">
     <value>Auto increment by base {n} using alphanumeric (1 &lt; n &lt; 63)</value>
@@ -821,9 +786,6 @@ Would you like to download and install it?</value>
   <data name="Helpers_CreateDirectoryIfNotExist_Create_failed_" xml:space="preserve">
     <value>Could not create directory.</value>
   </data>
-  <data name="DNSChangerForm_btnSave_Click_DNS_successfully_set__Reboot_is_required_" xml:space="preserve">
-    <value>DNS successfully set. Reboot is required.</value>
-  </data>
   <data name="ProxyMethod_Manual" xml:space="preserve">
     <value>Manual</value>
   </data>
@@ -861,7 +823,7 @@ Would you like to download and install it?</value>
     <value>Capture active monitor</value>
   </data>
   <data name="DownloaderForm_StartDownload_Getting_file_size_" xml:space="preserve">
-    <value>Getting file size.</value>
+    <value>Getting file size...</value>
   </data>
   <data name="HotkeyType_Category_Other" xml:space="preserve">
     <value>Other</value>
@@ -1285,5 +1247,71 @@ Would you like to download and install it?</value>
   </data>
   <data name="HotkeyType_CustomWindow" xml:space="preserve">
     <value>Capture pre configured window</value>
+  </data>
+  <data name="UpdateChannel_Dev" xml:space="preserve">
+    <value>Dev</value>
+  </data>
+  <data name="UpdateChannel_PreRelease" xml:space="preserve">
+    <value>Pre-release</value>
+  </data>
+  <data name="UpdateChannel_Release" xml:space="preserve">
+    <value>Release</value>
+  </data>
+  <data name="DownloaderForm_FileDownloader_ProgressChanged_Progress" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="DownloaderForm_FileDownloader_ProgressChanged_DownloadSpeed" xml:space="preserve">
+    <value>Download speed</value>
+  </data>
+  <data name="DownloaderForm_FileDownloader_ProgressChanged_FileSize" xml:space="preserve">
+    <value>File size</value>
+  </data>
+  <data name="HotkeyType_ActiveWindowBorderless" xml:space="preserve">
+    <value>Make active window borderless</value>
+  </data>
+  <data name="HotkeyType_ActiveWindowTopMost" xml:space="preserve">
+    <value>Make active window top most</value>
+  </data>
+  <data name="HotkeyType_PinToScreenCloseAll" xml:space="preserve">
+    <value>Pin to screen (Close all)</value>
+  </data>
+  <data name="ImageBeautifierBackgroundType_Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="ImageBeautifierBackgroundType_Desktop" xml:space="preserve">
+    <value>Desktop</value>
+  </data>
+  <data name="ImageBeautifierBackgroundType_Gradient" xml:space="preserve">
+    <value>Gradient</value>
+  </data>
+  <data name="ImageBeautifierBackgroundType_Image" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="ImageBeautifierBackgroundType_Transparent" xml:space="preserve">
+    <value>Transparent</value>
+  </data>
+  <data name="HotkeyType_Metadata" xml:space="preserve">
+    <value>Metadata</value>
+  </data>
+  <data name="HotkeyType_StripMetadata" xml:space="preserve">
+    <value>Strip metadata</value>
+  </data>
+  <data name="HotkeyType_QRCodeScanRegion" xml:space="preserve">
+    <value>QR code (Scan region)</value>
+  </data>
+  <data name="ScrollMethod_DownArrow" xml:space="preserve">
+    <value>Down arrow</value>
+  </data>
+  <data name="ScrollMethod_MouseWheel" xml:space="preserve">
+    <value>Mouse wheel</value>
+  </data>
+  <data name="ScrollMethod_PageDown" xml:space="preserve">
+    <value>Page down</value>
+  </data>
+  <data name="ScrollMethod_ScrollMessage" xml:space="preserve">
+    <value>Scroll message</value>
+  </data>
+  <data name="ToastClickAction_DeleteFile" xml:space="preserve">
+    <value>Delete file locally</value>
   </data>
 </root>

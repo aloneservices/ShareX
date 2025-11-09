@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2024 ShareX Team
+    Copyright (c) 2007-2025 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -119,7 +119,7 @@ namespace ShareX.UploadersLib.FileUploaders
             {
                 int chunkLength = chunkEnd - chunkStart;
                 byte[] plainBytes = new byte[chunkLength];
-                stream.Read(plainBytes, 0, chunkLength);
+                stream.ReadExactly(plainBytes);
 
                 byte[] encryptedBytes = EncryptBytes(cryptoData, plainBytes);
 
@@ -225,7 +225,7 @@ namespace ShareX.UploadersLib.FileUploaders
 
         private static byte[] EncryptBytes(Vault_oooCryptoData crypto, byte[] bytes)
         {
-            using (AesManaged aes = new AesManaged())
+            using (SymmetricAlgorithm aes = Aes.Create())
             {
                 aes.Mode = CipherMode.CBC;
                 aes.KeySize = AES_KEY_SIZE;

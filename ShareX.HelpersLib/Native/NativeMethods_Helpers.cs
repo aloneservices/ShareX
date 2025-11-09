@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2024 ShareX Team
+    Copyright (c) 2007-2025 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -553,6 +553,26 @@ namespace ShareX.HelpersLib
             Icon icon = (Icon)Icon.FromHandle(hIcon).Clone();
             DestroyIcon(hIcon);
             return icon;
+        }
+
+        public static Bitmap GetFileThumbnail(string filePath, Size thumbnailSize)
+        {
+            Guid guid = typeof(IShellItemImageFactory).GUID;
+            SHCreateItemFromParsingName(filePath, IntPtr.Zero, guid, out IShellItemImageFactory imageFactory);
+            SIZE size = new SIZE(thumbnailSize.Width, thumbnailSize.Height);
+            imageFactory.GetImage(size, SIIGBF.SIIGBF_RESIZETOFIT, out IntPtr hbitmap);
+            Bitmap bmp = null;
+
+            try
+            {
+                bmp = Image.FromHbitmap(hbitmap);
+            }
+            finally
+            {
+                DeleteObject(hbitmap);
+            }
+
+            return bmp;
         }
 
         public static float GetScreenScalingFactor()

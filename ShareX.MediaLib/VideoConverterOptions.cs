@@ -2,7 +2,7 @@
 
 /*
     ShareX - A program that allows you to take screenshots and share any file type
-    Copyright (c) 2007-2024 ShareX Team
+    Copyright (c) 2007-2025 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -223,6 +223,16 @@ namespace ShareX.MediaLib
                 case ConverterVideoCodecs.apng:
                     args.Append("-f apng ");
                     args.Append("-plays 0 ");
+                    break;
+            }
+
+            switch (VideoCodec)
+            {
+                case ConverterVideoCodecs.x265:
+                case ConverterVideoCodecs.hevc_nvenc:
+                case ConverterVideoCodecs.hevc_amf:
+                case ConverterVideoCodecs.hevc_qsv:
+                    args.Append("-tag:v hvc1 "); // https://trac.ffmpeg.org/wiki/Encode/H.265#FinalCutandApplestuffcompatibility
                     break;
             }
 
