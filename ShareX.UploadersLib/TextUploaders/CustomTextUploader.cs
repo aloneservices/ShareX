@@ -25,9 +25,14 @@
 
 using ShareX.HelpersLib;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
 using System.Text;
+using Newtonsoft.Json;
+using ProtoBuf;
 using ShareX.UploadersLib.Encryption;
+using ShareX.UploadersLib.Proto;
 
 namespace ShareX.UploadersLib.TextUploaders
 {
@@ -84,6 +89,35 @@ namespace ShareX.UploadersLib.TextUploaders
                 processedStream = encryptedResult.Stream;
             }
 
+            List<FileChunk> chunks = [];
+            byte[] checksum = [];
+            if (uploader.Alone)
+            {
+                processedStream.Seek(0, SeekOrigin.Begin);
+                uint order = 0;
+
+                for (var i = 0; i < processedStream.Length; i += UploadersConfig.FileChunkSize)
+                {
+                    var chunkLen = UploadersConfig.FileChunkSize;
+                    if (processedStream.Length - i < chunkLen)
+                        chunkLen = (int)(processedStream.Length - i);
+
+                    var data  = new byte[chunkLen];
+                    processedStream.ReadExactly(data);
+
+                    chunks.Add(new FileChunk
+                    {
+                        Order = order,
+                        Data = data,
+                        Checksum = SHA512.HashData(data)
+                    });
+                    order++;
+                }
+
+                processedStream.Seek(0, SeekOrigin.Begin);
+                checksum = SHA512.HashData(processedStream);
+            }
+
             using (var stream = processedStream)
             {
                 UploadResult result = new UploadResult();
@@ -117,8 +151,36 @@ namespace ShareX.UploadersLib.TextUploaders
                 }
                 else if (uploader.Body == CustomUploaderBody.Binary)
                 {
-                    result.Response = SendRequest(uploader.RequestMethod, uploader.GetRequestURL(input), stream, MimeTypes.GetMimeTypeFromFileName(fileName),
-                        null, uploader.GetHeaders(input));
+                    if (!uploader.Alone)
+                    {
+                        result.Response = SendRequest(uploader.RequestMethod, uploader.GetRequestURL(input), stream, MimeTypes.GetMimeTypeFromFileName(fileName), null,
+                            uploader.GetHeaders(input));
+                    }
+                    else
+                    {
+                        var payload = $"{{\"totalChunks\":{chunks.Count},\"checksum\":\"{Convert.ToBase64String(checksum)}\"}}";
+
+                        var encrypted = uploader.Encrypt ? "1" : "";
+                        var deleteAfterView = uploader.DeleteAfterView ? "1" : "";
+                        var query = $"?encrypted={encrypted}&deleteAfterView={deleteAfterView}";
+
+                        var initialResponse = new UploadResult { Response = SendRequest(uploader.RequestMethod, uploader.GetRequestURL(input) + query, payload, headers: uploader.GetHeaders(input)) };
+                        uploader.TryParseResponse(initialResponse, LastResponseInfo, Errors, input);
+                        if (!LastResponseInfo.IsSuccess)
+                            return initialResponse;
+
+                        var response = JsonConvert.DeserializeObject<Dictionary<string, string>>(initialResponse.Response);
+                        var fileId = response.GetValueOrDefault("fileId");
+
+                        foreach (var chunk in chunks)
+                        {
+                            var memoryStream = new MemoryStream();
+                            Serializer.Serialize(memoryStream, chunk);
+                            SendRequest(uploader.RequestMethod, $"https://api.alo.ne/file/chunk/{fileId}", memoryStream, headers: uploader.GetHeaders(input));
+                        }
+
+                        return initialResponse;
+                    }
                 }
                 else
                 {

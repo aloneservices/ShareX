@@ -76,8 +76,6 @@ namespace ShareX.UploadersLib.FileUploaders
     {
         private CustomUploaderItem uploader;
 
-        private const int FileChunkSize = 10485760;
-
         public CustomFileUploader(CustomUploaderItem customUploaderItem)
         {
             uploader = customUploaderItem;
@@ -100,9 +98,9 @@ namespace ShareX.UploadersLib.FileUploaders
                 processedStream.Seek(0, SeekOrigin.Begin);
                 uint order = 0;
 
-                for (var i = 0; i < processedStream.Length; i += FileChunkSize)
+                for (var i = 0; i < processedStream.Length; i += UploadersConfig.FileChunkSize)
                 {
-                    var chunkLen = FileChunkSize;
+                    var chunkLen = UploadersConfig.FileChunkSize;
                     if (processedStream.Length - i < chunkLen)
                         chunkLen = (int)(processedStream.Length - i);
 

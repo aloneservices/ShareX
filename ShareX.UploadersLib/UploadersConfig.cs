@@ -34,6 +34,8 @@ namespace ShareX.UploadersLib
 {
     public class UploadersConfig : SettingsBase<UploadersConfig>
     {
+        public const int FileChunkSize = 10485760;
+
         #region Image uploaders
 
         #region Imgur
