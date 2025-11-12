@@ -109,8 +109,9 @@
             ttHelpTip = new System.Windows.Forms.ToolTip(components);
             lblUploaders = new System.Windows.Forms.Label();
             pMain = new System.Windows.Forms.Panel();
-            chunkingCheckbox = new System.Windows.Forms.CheckBox();
             e2eeCheckbox = new System.Windows.Forms.CheckBox();
+            deleteAfterViewCheckbox = new System.Windows.Forms.CheckBox();
+            aloneCheckbox = new System.Windows.Forms.CheckBox();
             btnTestURLSyntax = new System.Windows.Forms.Button();
             cmsHelp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvHeaders).BeginInit();
@@ -697,8 +698,9 @@
             //
             // pMain
             //
-            pMain.Controls.Add(chunkingCheckbox);
             pMain.Controls.Add(e2eeCheckbox);
+            pMain.Controls.Add(deleteAfterViewCheckbox);
+            pMain.Controls.Add(aloneCheckbox);
             pMain.Controls.Add(btnTestURLSyntax);
             pMain.Controls.Add(pResultErrorMessage);
             pMain.Controls.Add(dgvHeaders);
@@ -727,19 +729,26 @@
             resources.ApplyResources(pMain, "pMain");
             pMain.Name = "pMain";
             //
-            // chunkingCheckbox
-            //
-            resources.ApplyResources(chunkingCheckbox, "chunkingCheckbox");
-            chunkingCheckbox.Name = "chunkingCheckbox";
-            chunkingCheckbox.UseVisualStyleBackColor = true;
-            chunkingCheckbox.CheckedChanged += chunkingCheckbox_CheckedChanged;
-            //
             // e2eeCheckbox
             //
             resources.ApplyResources(e2eeCheckbox, "e2eeCheckbox");
             e2eeCheckbox.Name = "e2eeCheckbox";
             e2eeCheckbox.UseVisualStyleBackColor = true;
             e2eeCheckbox.CheckedChanged += e2eeCheckbox_CheckedChanged;
+            //
+            // aloneCheckbox
+            //
+            resources.ApplyResources(aloneCheckbox, "aloneCheckbox");
+            aloneCheckbox.Name = "aloneCheckbox";
+            aloneCheckbox.UseVisualStyleBackColor = true;
+            aloneCheckbox.CheckedChanged += aloneCheckbox_CheckedChanged;
+            //
+            // deleteAfterViewCheckbox
+            //
+            resources.ApplyResources(deleteAfterViewCheckbox, "deleteAfterViewCheckbox");
+            deleteAfterViewCheckbox.Name = "deleteAfterViewCheckbox";
+            deleteAfterViewCheckbox.UseVisualStyleBackColor = true;
+            deleteAfterViewCheckbox.CheckedChanged += deleteAfterViewCheckbox_CheckedChanged;
             //
             // btnTestURLSyntax
             //
@@ -878,6 +887,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cArgumentsName;
         private System.Windows.Forms.DataGridViewTextBoxColumn cArgumentsValue;
         private System.Windows.Forms.CheckBox e2eeCheckbox;
-        private System.Windows.Forms.CheckBox chunkingCheckbox;
+        private System.Windows.Forms.CheckBox aloneCheckbox;
+        private System.Windows.Forms.CheckBox deleteAfterViewCheckbox;
     }
 }

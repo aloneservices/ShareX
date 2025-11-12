@@ -169,8 +169,10 @@ namespace ShareX.UploadersLib
             rtbRequestURL.Text = uploader.RequestURL ?? "";
             CustomUploaderSyntaxHighlight(rtbRequestURL);
 
-            chunkingCheckbox.Checked = uploader.Chunking;
             e2eeCheckbox.Checked = uploader.Encrypt;
+            aloneCheckbox.Checked = uploader.Alone;
+            deleteAfterViewCheckbox.Checked = uploader.DeleteAfterView;
+            deleteAfterViewCheckbox.Enabled = uploader.Alone;
 
             dgvParameters.Rows.Clear();
             if (uploader.Parameters != null)
@@ -1141,16 +1143,23 @@ namespace ShareX.UploadersLib
             await TestCustomUploader(CustomUploaderDestinationType.URLSharingService, Config.CustomURLSharingServiceSelected);
         }
 
-        private void chunkingCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            CustomUploaderItem uploader = CustomUploaderGetSelected();
-            if (uploader != null) uploader.Chunking = chunkingCheckbox.Checked;
-        }
-
         private void e2eeCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             CustomUploaderItem uploader = CustomUploaderGetSelected();
             if (uploader != null) uploader.Encrypt = e2eeCheckbox.Checked;
+        }
+
+        private void aloneCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            CustomUploaderItem uploader = CustomUploaderGetSelected();
+            if (uploader != null) uploader.Alone = aloneCheckbox.Checked;
+            deleteAfterViewCheckbox.Enabled = aloneCheckbox.Checked;
+        }
+
+        private void deleteAfterViewCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            CustomUploaderItem uploader = CustomUploaderGetSelected();
+            if (uploader != null) uploader.DeleteAfterView = deleteAfterViewCheckbox.Checked;
         }
 
         #endregion Form events

@@ -47,7 +47,10 @@ namespace ShareX.UploadersLib
         public bool Encrypt { get; set; }
 
         [DefaultValue("")]
-        public bool Chunking { get; set; }
+        public bool Alone { get; set; }
+
+        [DefaultValue("")]
+        public bool DeleteAfterView { get; set; }
 
         public bool ShouldSerializeName() => !string.IsNullOrEmpty(Name) && Name != URLHelpers.GetHostName(RequestURL);
 
